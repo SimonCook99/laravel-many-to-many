@@ -10,12 +10,12 @@
         @csrf
         <div class="form-group">
           <label for="title">Titolo post</label>
-          <input type="text" class="form-control" id="title" name="title">
+          <input type="text" class="form-control" id="title" name="title" value="{{old("title")}}">
         </div>
 
         <div class="form-group">
           <label for="content">Contenuto post</label>
-          <textarea class="form-control" id="content" rows="10" name="content"></textarea>
+          <textarea class="form-control" id="content" rows="10" name="content">{{old("content")}}</textarea>
         </div>
 
         <div class="form-group">
@@ -25,7 +25,7 @@
             <option value="">Nessuna categoria</option>
 
             @foreach ($categories as $category)
-              <option value="{{$category->id}}">{{$category->name}}</option>
+              <option {{old("category_id") == $category->id ? "selected" : ""}} value="{{$category->id}}">{{$category->name}}</option>
             @endforeach
           </select>
         </div>
